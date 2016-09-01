@@ -1,0 +1,40 @@
+
+
+buildscript { scriptHandler ->
+    apply from: 'repositories.gradle', to: scriptHandler
+    dependencies {
+        classpath('org.springframework.build.gradle:propdeps-plugin:0.0.7')
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.11'
+//    gradleVersion = '3.0'
+}
+
+subprojects { scriptHandler1 ->
+    apply from: rootProject.rootDir.path + '/repositories.gradle', to: scriptHandler1
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    ext {
+        springBootVersion = '1.4.0.RELEASE'
+    }
+
+    buildscript { scriptHandler ->
+        apply from: rootProject.rootDir.path + '/repositories.gradle', to: scriptHandler
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+
+    if (project.parent == null) {
+        buildDir = new File(rootProject.buildDir, project.name)
+    } else {
+        buildDir = new File(project.parent.buildDir, project.name)
+    }
+}

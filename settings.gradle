@@ -1,0 +1,4 @@
+rootProject.name = 'dependency-management-plugin-error-in-gradle-3.0'
+// Libraries
+include 'alpha:velocity'
+include 'core'

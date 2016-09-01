@@ -1,0 +1,20 @@
+apply plugin: 'spring-boot'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+bootRepackage {
+    enabled = false
+}
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.apache.velocity:velocity")
+    compile("org.apache.velocity:velocity-tools")
+    compile("org.springframework:spring-context-support")
+    optional("org.springframework.boot:spring-boot-configuration-processor")
+}
