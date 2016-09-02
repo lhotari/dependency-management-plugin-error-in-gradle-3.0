@@ -7,11 +7,6 @@ buildscript { scriptHandler ->
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.11'
-//    gradleVersion = '3.0'
-}
-
 subprojects { scriptHandler1 ->
     apply from: rootProject.rootDir.path + '/repositories.gradle', to: scriptHandler1
 
