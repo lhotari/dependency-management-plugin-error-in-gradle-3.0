@@ -4,6 +4,7 @@ buildscript { scriptHandler ->
     apply from: 'repositories.gradle', to: scriptHandler
     dependencies {
         classpath('org.springframework.build.gradle:propdeps-plugin:0.0.7')
+        classpath 'io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE'
     }
 }
 
