@@ -6,6 +6,7 @@ buildscript { scriptHandler ->
     configurations.all {
         resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }
+    println "${configurations.classpath.path} ${configurations.classpath.asPath}"
 }
 
 subprojects { scriptHandler1 ->
@@ -30,6 +31,7 @@ subprojects { scriptHandler1 ->
         configurations.all {
             resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
         }
+        println "${configurations.classpath.path} ${configurations.classpath.asPath}"
     }
 
     if (project.parent == null) {
