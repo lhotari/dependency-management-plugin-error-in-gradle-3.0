@@ -3,6 +3,9 @@ buildscript { scriptHandler ->
     dependencies {
         classpath('org.springframework.build.gradle:propdeps-plugin:0.0.7')
     }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
 }
 
 subprojects { scriptHandler1 ->
@@ -22,7 +25,10 @@ subprojects { scriptHandler1 ->
         apply from: rootProject.rootDir.path + '/repositories.gradle', to: scriptHandler
         dependencies {
             classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-            classpath "io.spring.gradle:dependency-management-plugin:${springDmPluginVersion}"
+            classpath("io.spring.gradle:dependency-management-plugin:${springDmPluginVersion}") { changing = true }
+        }
+        configurations.all {
+            resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
         }
     }
 
